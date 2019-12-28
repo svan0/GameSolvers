@@ -80,19 +80,25 @@ class Sudoku:
     @staticmethod
     def get_grid_from_text(text):
         """
-            Static helper method that takes a string of [0-9] and returns the Sudoku grid
+            Static helper method that takes a string of integers separated by '_' and returns the Sudoku grid
         """
-        N = int(math.sqrt(len(text)))
-        grid = [list(map(int, text[i : i + N])) for i in range(0, len(text), N)]
+        split_text = text.split("_")
+        N = int(math.sqrt(len(split_text)))
+        grid = [list(map(int, split_text[i : i + N])) for i in range(0, len(split_text), N)]
         return N, grid
 
     @staticmethod
     def get_text_from_grid(grid):
         """
-            Static helper method that takes a grid and returns a corresponding string of [0-9] values
+            Static helper method that takes a grid and returns a corresponding string of integers separated by '_'
         """
         result = ""
         for row in grid:
-            char_row = list(map(lambda x : chr(ord('0') + x), row))
-            result = result + "".join(char_row)
-        return result
+            char_row = list(map(lambda x : str(x), row))
+            result = result + "_".join(char_row) + "_"
+        return result[:-1]
+
+if __name__ == '__main__':
+    grid = [[1, 25], [12, 2]]
+    print(Sudoku.get_text_from_grid(grid))
+    print(Sudoku.get_grid_from_text(Sudoku.get_text_from_grid(grid)))
