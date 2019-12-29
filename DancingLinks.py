@@ -32,8 +32,8 @@ class DLXMatrix:
         self.column_cells = []
 
         #Dictionaries that map between row name and row id [from 0 to number of rows - 1]
-        self.row_number_to_row_id = dict()
-        self.row_id_to_row_number = dict()
+        self.row_number_to_row_name = dict()
+        self.row_name_to_row_number = dict()
 
         #Instanciate the column head cells
         self.prepare_columns(columns)
@@ -75,8 +75,8 @@ class DLXMatrix:
         assert(min(row) >= 0 and max(row) < self.number_of_columns)
 
         #Populate the row name <-> row id mappers
-        self.row_number_to_row_id[self.number_of_rows] = row_name
-        self.row_id_to_row_number[row_name] = self.number_of_rows
+        self.row_number_to_row_name[self.number_of_rows] = row_name
+        self.row_name_to_row_number[row_name] = self.number_of_rows
 
         #Make sure the row entries are sorted
         row = sorted(row)
