@@ -1,6 +1,6 @@
 import itertools
 from copy import deepcopy
-from ExactCover import DLXMatrix
+from DancingLinks import DLXMatrix
 class SudokuExactCoverConverter:
     """
         A class that contains methods that converts Sudoku instance to DLX Matrix and ExactCover Solution back to Sudoku instance
@@ -33,7 +33,7 @@ class SudokuExactCoverConverter:
     def convert_sudoku_to_exact_cover(sudoku_config):
         """
         Converts a Sudoku instance to DLX Matrix and returns it
-        Each row in DLX Matrix will correspond to setting cell (R, C) to value V
+        Each row in DLX Matrix will correspond to setting cell (R, C) to value V (ranges from 0 to N - 1)
         And each row has name R_C_V
         """
         sudoku_grid_size = sudoku_config.get_grid_size()
